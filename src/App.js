@@ -33,25 +33,6 @@ function App() {
       <StorageSection isVisible={scrollProgress > 0.2} />
       <Footer />
 
-      <motion.div 
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 lg:hidden z-50"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: scrollProgress < 0.9 ? 1 : 0, y: scrollProgress < 0.9 ? 0 : 20 }}
-      >
-        <div className="px-4 py-2 bg-slate-800/90 backdrop-blur-sm rounded-full border border-slate-700 flex items-center gap-2">
-          <div className="flex gap-1">
-            {[0, 0.33, 0.66].map((pos, i) => (
-              <div 
-                key={i}
-                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                  scrollProgress >= pos && scrollProgress < (pos + 0.33) ? 'bg-blue-400' : 'bg-slate-600'
-                }`}
-              />
-            ))}
-          </div>
-          <span className="text-slate-400 text-xs">Scroll to explore</span>
-        </div>
-      </motion.div>
     </div>
   );
 }
