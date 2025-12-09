@@ -34,7 +34,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-emerald-100/70 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-amber-400" />
-                <span>taibahid@gmail.com</span>
+                <span>taibahid1@gmail.com</span>
               </li>
             </ul>
           </div>
