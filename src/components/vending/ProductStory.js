@@ -342,7 +342,7 @@ const productStories = {
   },
 };
 
-export default function ProductStory({ product, onClose }) {
+const ProductStory = ({ product, onClose }) => {
   const [currentScene, setCurrentScene] = useState(0);
   const story = productStories[product.id];
   
@@ -366,15 +366,15 @@ export default function ProductStory({ product, onClose }) {
   const scene = story.scenes[currentScene];
 
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-xl m-0 p-0" style={{ margin: 0, padding: 0 }}>
-      {/* Close button */}
+    <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-xl m-0 p-0">
+      {/* Close button - Mobile optimized */}
       <motion.button
         onClick={onClose}
-        className="absolute top-3 left-3 z-30 w-8 h-8 bg-black/50 hover:bg-red-500/80 rounded-full flex items-center justify-center transition-colors"
+        className="absolute top-2 md:top-3 left-2 md:left-3 z-30 w-8 h-8 md:w-10 md:h-10 bg-black/50 hover:bg-red-500/80 rounded-full flex items-center justify-center transition-colors touch-target"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <X className="w-4 h-4 text-white" />
+        <X className="w-4 h-4 md:w-5 md:h-5 text-white" />
       </motion.button>
 
       {/* Background transition */}
@@ -389,8 +389,8 @@ export default function ProductStory({ product, onClose }) {
         />
       </AnimatePresence>
 
-      {/* Ambient particles */}
-      {[...Array(8)].map((_, i) => (
+      {/* Ambient particles - Reduced on mobile */}
+      {[...Array(typeof window !== 'undefined' && window.innerWidth < 768 ? 4 : 8)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-white/30 rounded-full"
@@ -414,19 +414,19 @@ export default function ProductStory({ product, onClose }) {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentScene}
-          className="relative z-10 text-center px-6 flex flex-col items-center"
+          className="relative z-10 text-center px-4 md:px-6 flex flex-col items-center"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: -20 }}
           transition={{ duration: 0.6 }}
         >
           {/* Animated Character or Icon */}
-          <div className="w-48 h-48 md:w-64 md:h-64 mb-6">
+          <div className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 mb-4 md:mb-6">
             {scene.animation ? (
               <AnimatedCharacter action={scene.animation} />
             ) : (
               <motion.div
-                className="text-8xl md:text-9xl h-full flex items-center justify-center"
+                className="text-6xl md:text-8xl lg:text-9xl h-full flex items-center justify-center"
                 animate={{ 
                   scale: [1, 1.1, 1],
                   rotate: [0, 5, -5, 0]
@@ -438,9 +438,9 @@ export default function ProductStory({ product, onClose }) {
             )}
           </div>
           
-          {/* Text */}
+          {/* Text - Mobile optimized */}
           <motion.p
-            className="text-white text-xl md:text-2xl font-bold max-w-md"
+            className="text-white text-lg md:text-xl lg:text-2xl font-bold max-w-xs md:max-w-md px-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -450,22 +450,24 @@ export default function ProductStory({ product, onClose }) {
         </motion.div>
       </AnimatePresence>
 
-      {/* Progress dots */}
-      <div className="absolute bottom-4 flex gap-2">
+      {/* Progress dots - Mobile optimized */}
+      <div className="absolute bottom-2 md:bottom-4 flex gap-1 md:gap-2">
         {story.scenes.map((_, i) => (
           <motion.div
             key={i}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              i === currentScene ? 'bg-white w-6' : 'bg-white/40'
+            className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-300 ${
+              i === currentScene ? 'bg-white w-4 md:w-6' : 'bg-white/40'
             }`}
           />
         ))}
       </div>
 
-      {/* Product name */}
-      <div className="absolute top-3 right-3 px-3 py-1 bg-black/30 rounded-full">
-        <span className="text-white/80 text-sm">{story.name}</span>
+      {/* Product name - Mobile optimized */}
+      <div className="absolute top-2 md:top-3 right-2 md:right-3 px-2 md:px-3 py-0.5 md:py-1 bg-black/30 rounded-full">
+        <span className="text-white/80 text-xs md:text-sm">{story.name}</span>
       </div>
     </div>
   );
-}
+};
+
+export default ProductStory;

@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown, Gift, MapPin, Sparkles,BookOpen } from 'lucide-react';
+import { ChevronDown, Gift, MapPin, Sparkles, BookOpen } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import MobileNav from './MobileNav'; // Add this import
 
 export default function HeroSection({ scrollProgress }) {
   const [isMounted, setIsMounted] = useState(false);
@@ -12,14 +13,17 @@ export default function HeroSection({ scrollProgress }) {
   }, []);
 
   const scrollToNextSection = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
+    const nextSection = document.querySelector('#storage-section');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-900">
+    <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-900">
+      {/* Mobile Navigation */}
+      <MobileNav />
+      
       {/* Background Image Overlay */}
       <div 
         className="absolute inset-0 opacity-30"
@@ -33,13 +37,11 @@ export default function HeroSection({ scrollProgress }) {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/80 via-emerald-800/70 to-emerald-900/90" />
 
-
-
       {/* Floating Golden Particles */}
-      {[...Array(15)].map((_, i) => (
+      {[...Array(12)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-amber-400/60 rounded-full"
+          className="absolute w-1 h-1 bg-amber-400/60 rounded-full hidden sm:block"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -57,11 +59,11 @@ export default function HeroSection({ scrollProgress }) {
       ))}
 
       {/* Main Content Container */}
-      <div className="relative z-10 h-full flex flex-col lg:flex-row items-center justify-center px-6 md:px-12 lg:px-20 gap-8 lg:gap-16">
+      <div className="relative z-10 h-full flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 md:px-12 lg:px-20 gap-6 md:gap-8 lg:gap-16 pt-20 md:pt-0">
         
         {/* Left Side - Text Content */}
         <motion.div 
-          className="flex-1 text-center lg:text-right order-2 lg:order-1 max-w-xl"
+          className="flex-1 text-center lg:text-right order-2 lg:order-1 max-w-xl px-2"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
@@ -69,30 +71,30 @@ export default function HeroSection({ scrollProgress }) {
         >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-amber-500/20 backdrop-blur-sm rounded-full border border-amber-500/30"
+            className="inline-flex items-center gap-2 mb-4 md:mb-6 px-3 md:px-4 py-1.5 md:py-2 bg-amber-500/20 backdrop-blur-sm rounded-full border border-amber-500/30"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <MapPin className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-300 text-sm font-medium">المدينة المنورة</span>
+            <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-400" />
+            <span className="text-amber-300 text-xs md:text-sm font-medium">المدينة المنورة</span>
           </motion.div>
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 md:mb-4">
             هدية تُقدم
-            <span className="block text-amber-400 mt-2">وروح تُهدى</span>
+            <span className="block text-amber-400 mt-1 md:mt-2">وروح تُهدى</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-emerald-100/80 mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-emerald-100/80 mb-6 md:mb-8 leading-relaxed">
             آلة بيع ذكية توفر لك أجمل الهدايا والتذكارات من المدينة المنورة
             <br />
             <span className="text-amber-300">بلمسة واحدة</span>
           </p>
 
           {/* Features */}
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-2 md:gap-4 mb-6 md:mb-8">
             {[
               { icon: Gift, text: 'هدايا فريدة' },
               { icon: Sparkles, text: 'جودة عالية' },
@@ -100,45 +102,44 @@ export default function HeroSection({ scrollProgress }) {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg"
+                className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-white/10 backdrop-blur-sm rounded-lg text-xs md:text-sm"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
               >
-                <item.icon className="w-5 h-5 text-amber-400" />
-                <span className="text-white text-sm">{item.text}</span>
+                <item.icon className="w-4 h-4 md:w-5 md:h-5 text-amber-400" />
+                <span className="text-white">{item.text}</span>
               </motion.div>
             ))}
           </div>
 
-
         </motion.div>
 
-        {/* Right Side - Vending Machine */}
-        <motion.div 
-          className="flex-1 flex justify-center order-1 lg:order-2"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          style={{ opacity: 1 - scrollProgress * 0.8 }}
-        >
+          {/* Right Side - Vending Machine */}
+          <motion.div 
+            className="flex-1 flex justify-center order-1 lg:order-2 scale-75 sm:scale-90 md:scale-95 lg:scale-100 lg:mt-8 lg:pt-8" // Added lg:mt-8 and lg:pt-8
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            style={{ opacity: 1 - scrollProgress * 0.8 }}
+          >
           {/* Enhanced Glow Effects */}
           <motion.div 
-            className="absolute w-96 h-96 bg-amber-500/30 rounded-full blur-3xl"
+            className="absolute w-64 h-64 md:w-96 md:h-96 bg-amber-500/30 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
             transition={{ duration: 4, repeat: Infinity }}
           />
           <motion.div 
-            className="absolute w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-3xl"
+            className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-emerald-500/20 rounded-full blur-3xl"
             animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 5, repeat: Infinity, delay: 1 }}
           />
           
           {/* Floating Sparkles */}
-          {[...Array(12)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <motion.div
               key={`sparkle-${i}`}
-              className="absolute w-1.5 h-1.5 bg-amber-400 rounded-full"
+              className="absolute w-1.5 h-1.5 bg-amber-400 rounded-full hidden sm:block"
               style={{
                 left: `${20 + Math.random() * 60}%`,
                 top: `${20 + Math.random() * 60}%`,
@@ -166,13 +167,15 @@ export default function HeroSection({ scrollProgress }) {
           >
             <motion.svg 
               viewBox="0 0 580 550" 
-              className="w-80 md:w-96 lg:w-[550px] drop-shadow-2xl" 
+              className="w-64 sm:w-72 md:w-80 lg:w-[550px] drop-shadow-2xl" 
               style={{ transform: 'rotateY(-12deg)', transformStyle: 'preserve-3d' }}
               animate={{ 
                 rotateY: [-12, -10, -12],
               }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
+              {/* Keep your existing SVG code here - it was working before */}
+              {/* I'll just show the skeleton, you should keep your original SVG content */}
               <defs>
                 <linearGradient id="sideGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#143d32" />
@@ -280,21 +283,21 @@ export default function HeroSection({ scrollProgress }) {
                 {/* Logo on screen */}
                 <image href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/692dcb8fc91935112f972891/26de27144____1447-06-12__201912_64739d25-removebg-preview.png" x="100" y="200" width="100" height="50" preserveAspectRatio="xMidYMid meet" />
 
-{/* Book Open Icon on Screen */}
-<g transform="translate(125, 285)">
-  <foreignObject width="50" height="50">
-    <div xmlns="http://www.w3.org/1999/xhtml" style={{ width: '30px', height: '30px' }}>
-      <BookOpen 
-        className="text-amber-400" 
-        style={{ 
-          width: '50px', 
-          height: '50px',
-          color: '#b5994cff'
-        }} 
-      />
-    </div>
-  </foreignObject>
-</g>
+                {/* Book Open Icon on Screen */}
+                <g transform="translate(125, 285)">
+                  <foreignObject width="50" height="50">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style={{ width: '30px', height: '30px' }}>
+                      <BookOpen 
+                        className="text-amber-400" 
+                        style={{ 
+                          width: '50px', 
+                          height: '50px',
+                          color: '#b5994cff'
+                        }} 
+                      />
+                    </div>
+                  </foreignObject>
+                </g>
 
                 {/* Screen Buttons */}
                 <rect x="80" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent)" strokeWidth="1" />
@@ -481,13 +484,13 @@ export default function HeroSection({ scrollProgress }) {
 
             {/* Floating Info Cards */}
             <motion.div
-              className="absolute -right-4 top-10 px-3 py-2 bg-emerald-800/90 backdrop-blur-sm rounded-lg border border-amber-500/30 shadow-lg"
+              className="absolute -right-2 sm:-right-4 top-8 sm:top-10 px-2 sm:px-3 py-1.5 sm:py-2 bg-emerald-800/90 backdrop-blur-sm rounded-lg border border-amber-500/30 shadow-lg hidden sm:block"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 }}
             >
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full animate-pulse" />
                 <span className="text-xs text-white">متاح 24/7</span>
               </div>
             </motion.div>
@@ -498,7 +501,7 @@ export default function HeroSection({ scrollProgress }) {
 
       {/* Brand Logo - Bottom Left */}
       <motion.div 
-        className="absolute bottom-6 left-6 md:left-12 z-40"
+        className="absolute bottom-4 left-4 md:left-12 z-40"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
@@ -506,19 +509,30 @@ export default function HeroSection({ scrollProgress }) {
         <img 
           src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/692dcb8fc91935112f972891/26de27144____1447-06-12__201912_64739d25-removebg-preview.png" 
           alt="Taibah" 
-          className="h-16 md:h-20 object-contain"
+          className="h-10 sm:h-12 md:h-16 lg:h-20 object-contain"
         />
       </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-40"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <span className="text-emerald-300/60 text-xs">اكتشف المزيد</span>
-        <ChevronDown className="w-5 h-5 text-amber-400" />
-      </motion.div>
+{/* Scroll Indicator - Desktop */}
+<motion.div 
+  className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 md:gap-2 z-10 cursor-pointer touch-target hidden sm:flex" // Added hidden sm:flex
+  animate={{ y: [0, 8, 0] }}
+  transition={{ duration: 2, repeat: Infinity }}
+  onClick={scrollToNextSection}
+>
+  <span className="text-emerald-300/60 text-xs">اكتشف المزيد</span>
+  <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-amber-400" />
+</motion.div>
+
+{/* Mobile-only simpler indicator */}
+<motion.div 
+  className="absolute bottom-4 right-4 sm:hidden z-10 cursor-pointer"
+  animate={{ y: [0, 5, 0] }}
+  transition={{ duration: 2, repeat: Infinity }}
+  onClick={scrollToNextSection}
+>
+  <ChevronDown className="w-5 h-5 text-amber-400" />
+</motion.div>
     </section>
   );
 }

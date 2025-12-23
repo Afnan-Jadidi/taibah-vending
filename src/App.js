@@ -16,7 +16,8 @@ function App() {
     return () => unsubscribe();
   }, [scrollYProgress]);
 
-  const heroProgress = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  // Adjust scroll threshold for better mobile experience
+  const heroProgress = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const [heroScrollValue, setHeroScrollValue] = useState(0);
 
   useEffect(() => {
@@ -30,9 +31,8 @@ function App() {
     <div className="bg-slate-950 min-h-screen">
       <ScrollProgress progress={scrollProgress} />
       <HeroSection scrollProgress={heroScrollValue} />
-      <StorageSection isVisible={scrollProgress > 0.2} />
+      <StorageSection isVisible={scrollProgress > 0.3} />
       <Footer />
-
     </div>
   );
 }
