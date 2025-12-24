@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/taibah-vending/static/css/main.37be8dcb.css",
-    "main.js": "/taibah-vending/static/js/main.13d6d736.js",
+    "main.js": "/taibah-vending/static/js/main.2906a47e.js",
     "index.html": "/taibah-vending/index.html",
     "main.37be8dcb.css.map": "/taibah-vending/static/css/main.37be8dcb.css.map",
-    "main.13d6d736.js.map": "/taibah-vending/static/js/main.13d6d736.js.map"
+    "main.2906a47e.js.map": "/taibah-vending/static/js/main.2906a47e.js.map"
   },
   "entrypoints": [
     "static/css/main.37be8dcb.css",
-    "static/js/main.13d6d736.js"
+    "static/js/main.2906a47e.js"
   ]
 }
