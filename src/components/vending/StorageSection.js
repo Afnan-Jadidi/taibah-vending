@@ -228,34 +228,53 @@ export default function StorageSection({ isVisible }) {
                 {/* Top Logo Area */}
                 <image href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/692dcb8fc91935112f972891/26de27144____1447-06-12__201912_64739d25-removebg-preview.png" x="200" y="60" width="200" height="50" preserveAspectRatio="xMidYMid meet" />
 
-                {/* Left Section - Touch Screen */}
-                <g className="cursor-pointer" onClick={() => setIsScreenZoomed(true)}>
-                  <rect x="120" y="130" width="160" height="320" rx="8" fill="#163d32" />
-                  <rect x="120" y="130" width="160" height="320" rx="8" fill="none" stroke="url(#goldAccent3)" strokeWidth="2" />
-                  <rect x="130" y="140" width="140" height="250" rx="4" fill="url(#screenGlow3)" />
-                  <image href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/692dcb8fc91935112f972891/26de27144____1447-06-12__201912_64739d25-removebg-preview.png" x="155" y="180" width="100" height="50" preserveAspectRatio="xMidYMid meet" />
-                  {/* Book Open Icon on Screen */}
-                  <g transform="translate(180, 265)">
-                    <foreignObject width="40" height="40">
-                      <div xmlns="http://www.w3.org/1999/xhtml" style={{ width: '30px', height: '30px' }}>
-                        <BookOpen 
-                          className="text-amber-400" 
-                          style={{ 
-                            width: '40', 
-                            height: '40',
-                            color: '#b5994cff'
-                          }} 
-                        />
-                      </div>
-                    </foreignObject>
-                  </g>
+{/* Left Section - Touch Screen */}
+<g className="cursor-pointer" onClick={() => setIsScreenZoomed(true)}>
+  <rect x="120" y="130" width="160" height="320" rx="8" fill="#163d32" />
+  <rect x="120" y="130" width="160" height="320" rx="8" fill="none" stroke="url(#goldAccent3)" strokeWidth="2" />
+  <rect x="130" y="140" width="140" height="250" rx="4" fill="url(#screenGlow3)" />
+  
+  {/* Language Selector Button */}
+  <g className="cursor-pointer" onClick={(e) => {
+    e.stopPropagation();
+    // Language selector functionality will be implemented later
+    console.log("Language selector clicked");
+  }}>
+    <rect x="140" y="150" width="120" height="25" rx="4" fill="#1e5a47" />
+    <rect x="140" y="150" width="120" height="25" rx="4" fill="none" stroke="url(#goldAccent3)" strokeWidth="1" />
+    <text x="200" y="166" textAnchor="middle" fill="#c9a227" fontSize="8" fontWeight="bold">🌐 اللغة / Language</text>
+  </g>
+  
+  {/* Main Logo */}
+  <image href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/692dcb8fc91935112f972891/26de27144____1447-06-12__201912_64739d25-removebg-preview.png" 
+    x="155" y="180" width="100" height="50" preserveAspectRatio="xMidYMid meet" />
+  
+  {/* Book Open Icon on Screen */}
+  <g transform="translate(180, 265)">
+    <foreignObject width="40" height="40">
+      <div xmlns="http://www.w3.org/1999/xhtml" style={{ width: '30px', height: '30px' }}>
+        <BookOpen 
+          className="text-amber-400" 
+          style={{ 
+            width: '40', 
+            height: '40',
+            color: '#b5994cff'
+          }} 
+        />
+      </div>
+    </foreignObject>
+  </g>
+  
+  <text x="200" y="320" textAnchor="middle" fill="#1e5a47" fontSize="10" fontWeight="bold">اضغط لاختيار المنتج</text>
+  
+  {/* Action Buttons */}
+  <rect x="130" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent3)" strokeWidth="1" />
+  <text x="160" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">Buy</text>
+  <rect x="200" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent3)" strokeWidth="1" />
+  <text x="230" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">Stories</text>
+</g>
                   
-                  <text x="200" y="320" textAnchor="middle" fill="#1e5a47" fontSize="10" fontWeight="bold">اضغط لاختيار المنتج</text>
-                  <rect x="130" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent3)" strokeWidth="1" />
-                  <text x="160" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">Buy</text>
-                  <rect x="200" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent3)" strokeWidth="1" />
-                  <text x="230" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">Stories</text>
-                </g>
+
 
                 {/* Right Section - Glass Display */}
                 <rect x="295" y="130" width="180" height="320" rx="4" fill="#1a1a1a" />
