@@ -545,7 +545,7 @@ export default function StorageSection({ isVisible }) {
 
               {/* Steps indicator - Mobile optimized */}
               <div className="mt-4 md:mt-6 flex flex-wrap justify-center gap-1 md:gap-2" dir="rtl">
-                {['ذهاب للعمود', 'تحميل', 'إنزال', 'استلام'].map((step, i) => (
+                {['ذهاب للعمود', 'تحميل', 'إنزال آمن', 'استلام'].map((step, i) => (
                   <div 
                     key={i}
                     className={`px-2 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
@@ -561,7 +561,55 @@ export default function StorageSection({ isVisible }) {
                 ))}
               </div>
             </div>
+
+ 
+  {/* Interactive Instructions - جنب بعض تحت مؤشر الخطوات */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full mt-3" dir="rtl"> {/* تم تغيير max-w-2xl mx-auto إلى w-full */}
+    <motion.div 
+      className="bg-gradient-to-r from-blue-900/40 to-blue-800/30 rounded-xl p-3 border border-blue-500/30 backdrop-blur-sm"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ scale: 1.02 }}
+    >
+      <div className="flex items-center gap-2 h-full">
+        <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+          <BookOpen className="w-4 h-4 text-blue-400" />
+        </div>
+        <div className="flex-1 text-right"> {/* أضفت text-right هنا */}
+          <p className="text-white font-semibold text-xs mb-1">اضغط على الشاشة الكبيرة</p>
+          <p className="text-blue-200/60 text-[10px] leading-tight">
+            استكشاف المنتجات وقراءة قصصها<br />ومشاهدتها بتقنية 3D
+          </p>
+        </div>
+      </div>
+    </motion.div>
+    
+    <motion.div 
+      className="bg-gradient-to-r from-amber-900/40 to-amber-800/30 rounded-xl p-3 border border-amber-500/30 backdrop-blur-sm"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 }}
+      viewport={{ once: true }}
+      whileHover={{ scale: 1.02 }}
+    >
+      <div className="flex items-center gap-2 h-full">
+        <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+          <ShoppingCart className="w-4 h-4 text-amber-400" />
+        </div>
+        <div className="flex-1 text-right"> {/* أضفت text-right هنا */}
+          <p className="text-white font-semibold text-xs mb-1">اضغط على شاشة الدفع الصغيرة</p>
+          <p className="text-amber-200/60 text-[10px] leading-tight">
+            لتجربة عملية الشراء<br />واختيار المنتجات
+          </p>
+        </div>
+      </div>
           </motion.div>
+</div>
+          </motion.div>
+
+          
+
 
           {/* Right Side - Protection Features */}
           <motion.div 
@@ -578,7 +626,7 @@ export default function StorageSection({ isVisible }) {
             <p className="text-emerald-100/70 text-sm md:text-base max-w-xl mx-auto">
               اختر منتجاً وشاهد كيف يصل إليك بأمان تام
             </p>
-              
+
             {protectionFeatures.map((feature, index) => (
               <motion.div
                 key={index}
