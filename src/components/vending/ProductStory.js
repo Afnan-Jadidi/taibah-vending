@@ -482,47 +482,44 @@ const ProductStory = ({ product, onClose }) => {
   return (
     <div 
       ref={containerRef}
-      className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-xl m-0 p-0 cursor-pointer select-none"
-      onClick={handleContainerClick}
+className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-xl m-0 p-0 cursor-pointer select-none"      onClick={handleContainerClick}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       {/* Close button */}
-      <motion.button
-        onClick={(e) => {
-          e.stopPropagation();
-          onClose();
-        }}
-        className="absolute top-2 md:top-3 left-2 md:left-3 z-30 w-8 h-8 md:w-10 md:h-10 bg-black/50 hover:bg-red-500/80 rounded-full flex items-center justify-center transition-colors touch-target"
-        whileHover={{ scale: 1.1 }}
+    <motion.button
+      onClick={(e) => {
+        e.stopPropagation();
+        onClose();
+      }}
+      className="absolute top-1.5 sm:top-2 md:top-3 left-1.5 sm:left-2 md:left-3 z-30 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-black/50 hover:bg-red-500/80 rounded-full flex items-center justify-center transition-colors touch-target"        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <X className="w-4 h-4 md:w-5 md:h-5 text-white" />
-      </motion.button>
-
+      <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white" />
+    </motion.button>
 
 
       {/* Navigation controls - تظهر عند اللمس */}
-      <AnimatePresence>
-        {showControls && (
-          <motion.div
-            className="absolute inset-0 z-20 flex items-center justify-between px-4 md:px-8 pointer-events-none"
-            initial={{ opacity: 0 }}
+    <AnimatePresence>
+      {showControls && (
+        <motion.div
+          className="absolute inset-0 z-20 flex items-center justify-between px-3 sm:px-4 md:px-8 pointer-events-none"
+           initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <motion.button
-              onClick={(e) => {
-                e.stopPropagation();
-                prevScene();
-              }}
-              className="w-12 h-12 md:w-16 md:h-16 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center transition-colors touch-target pointer-events-auto"
-              whileHover={{ scale: 1.1 }}
+          <motion.button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevScene();
+            }}
+            className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center transition-colors touch-target pointer-events-auto"
+                         whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <SkipBack className="w-6 h-6 md:w-8 md:h-8 text-white" />
-            </motion.button>
+            <SkipBack className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
+          </motion.button>
             
             <motion.button
               onClick={(e) => {
@@ -581,18 +578,17 @@ const ProductStory = ({ product, onClose }) => {
       ))}
 
       {/* Scene content */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentScene}
-          className="relative z-10 text-center px-4 md:px-6 flex flex-col items-center pointer-events-none"
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={currentScene}
+        className="relative z-10 text-center px-3 sm:px-4 md:px-6 flex flex-col items-center pointer-events-none"
+                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: -20 }}
           transition={{ duration: 0.6 }}
         >
           {/* Animated Character or Icon */}
-          <div className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 mb-4 md:mb-6">
-            {scene.animation ? (
+        <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 mb-3 sm:mb-4 md:mb-6">            {scene.animation ? (
               <AnimatedCharacter action={scene.animation} />
             ) : (
               <motion.div
@@ -610,8 +606,7 @@ const ProductStory = ({ product, onClose }) => {
           
           {/* Text */}
           <motion.p
-            className="text-white text-lg md:text-xl lg:text-2xl font-bold max-w-xs md:max-w-md px-2"
-            initial={{ opacity: 0, y: 10 }}
+  className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-bold max-w-[250px] sm:max-w-xs md:max-w-md px-2"            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
@@ -620,7 +615,7 @@ const ProductStory = ({ product, onClose }) => {
 
           {/* Instruction hint */}
           <motion.div
-            className="mt-4 text-white/60 text-sm"
+          className="mt-2 sm:mt-4 text-white/60 text-xs sm:text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: showControls ? 0 : 0.7 }}
             transition={{ delay: 1 }}
@@ -631,8 +626,7 @@ const ProductStory = ({ product, onClose }) => {
       </AnimatePresence>
 
       {/* Progress dots - قابلة للنقر */}
-      <div className="absolute bottom-2 md:bottom-4 flex gap-1 md:gap-2">
-        {story.scenes.map((_, i) => (
+    <div className="absolute bottom-1.5 sm:bottom-2 md:bottom-4 flex gap-0.5 sm:gap-1 md:gap-2">        {story.scenes.map((_, i) => (
           <motion.button
             key={i}
             onClick={(e) => {
@@ -648,20 +642,19 @@ const ProductStory = ({ product, onClose }) => {
           />
         ))}
       </div>
-
-      {/* Scene counter */}
-      <div className="absolute bottom-2 md:bottom-4 right-2 md:right-3 px-2 md:px-3 py-0.5 md:py-1 bg-black/30 rounded-full pointer-events-none">
-        <span className="text-white/80 text-xs md:text-sm">
-          {currentScene + 1} / {story.scenes.length}
-        </span>
-      </div>
-
-      {/* Product name */}
-      <div className="absolute top-2 md:top-3 right-2 md:right-3 px-2 md:px-3 py-0.5 md:py-1 bg-black/30 rounded-full pointer-events-none">
-        <span className="text-white/80 text-xs md:text-sm">{story.name}</span>
-      </div>
+ {/* Scene counter - adjust positioning */}
+    <div className="absolute bottom-1.5 sm:bottom-2 md:bottom-4 right-1.5 sm:right-2 md:right-3 px-1.5 sm:px-2 md:px-3 py-0.5 md:py-1 bg-black/30 rounded-full pointer-events-none">
+      <span className="text-white/80 text-[10px] sm:text-xs md:text-sm">
+        {currentScene + 1} / {story.scenes.length}
+      </span>
     </div>
-  );
+
+    {/* Product name - adjust positioning */}
+    <div className="absolute top-1.5 sm:top-2 md:top-3 right-1.5 sm:right-2 md:right-3 px-1.5 sm:px-2 md:px-3 py-0.5 md:py-1 bg-black/30 rounded-full pointer-events-none">
+      <span className="text-white/80 text-[10px] sm:text-xs md:text-sm">{story.name}</span>
+    </div>
+  </div>
+);
 };
 
 export default ProductStory;

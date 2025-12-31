@@ -69,3 +69,105 @@ html {
     font-size: 16px !important;
   }
 }
+
+/* Add to index.css */
+
+/* Extra small devices (phones, less than 400px) */
+@media (max-width: 400px) {
+  .xs\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .xs\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .xs\:gap-2 {
+    gap: 0.5rem;
+  }
+  
+  .xs\:p-3 {
+    padding: 0.75rem;
+  }
+  
+  .xs\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  
+  .xs\:text-\[10px\] {
+    font-size: 10px;
+  }
+  
+  .xs\:text-\[9px\] {
+    font-size: 9px;
+  }
+  
+  .xs\:w-4 {
+    width: 1rem;
+  }
+  
+  .xs\:h-4 {
+    height: 1rem;
+  }
+  
+  .xs\:w-8 {
+    width: 2rem;
+  }
+  
+  .xs\:h-8 {
+    height: 2rem;
+  }
+}
+
+/* Prevent text overflow on very small screens */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Better touch targets for very small screens */
+@media (max-width: 400px) {
+  .touch-target {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+/* Adjust font sizes for Arabic text on small screens */
+@media (max-width: 640px) {
+  html[dir="rtl"] {
+    font-size: 15px;
+  }
+  
+  [dir="rtl"] h1, 
+  [dir="rtl"] h2, 
+  [dir="rtl"] h3 {
+    line-height: 1.2;
+  }
+}
+
+/* Optimize modal overlays for mobile */
+@media (max-width: 768px) {
+  .modal-content {
+    max-height: 85vh;
+    margin: 1rem;
+  }
+}
+
+/* Adjust product story modal for mobile */
+@media (max-width: 640px) {
+  .product-story-scene {
+    padding: 1rem;
+  }
+  
+  .scene-text {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+}

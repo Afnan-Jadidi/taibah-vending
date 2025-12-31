@@ -150,23 +150,18 @@ export default function StorageSection({ isVisible }) {
   ];
 
   return (
-    <section id="storage-section" className="relative min-h-screen w-full bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-900 overflow-hidden py-8 sm:py-12 md:py-20">
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+<section id="storage-section" className="relative min-h-screen w-full bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-900 overflow-hidden py-8 sm:py-12 md:py-20 flex items-center justify-center"> {/* Added flex items-center justify-center */}
+  <div className="relative max-w-6xl mx-auto px-4 sm:px-6 w-full"> {/* Added w-full */}
         
         {/* Main Container - Horizontal Layout */}
-        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-start">
+<div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-center justify-center"> {/* Changed to items-center and added justify-center */}
           
           {/* Left Side - Vending Machine */}
           <motion.div 
-            className="lg:w-3/5"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+zzzzzzzzz
           >
             <div className="relative bg-emerald-900/30 rounded-xl md:rounded-3xl p-4 md:p-6 border border-amber-500/20">
-              <svg viewBox="0 0 630 550" className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[700px] drop-shadow-2xl mx-auto">
-                <defs>
+<svg viewBox="0 0 630 550" className="w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[700px] drop-shadow-2xl mx-auto">                <defs>
                   <linearGradient id="sideGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#143d32" />
                     <stop offset="100%" stopColor="#0f2e26" />
@@ -564,47 +559,50 @@ export default function StorageSection({ isVisible }) {
 
  
   {/* Interactive Instructions - جنب بعض تحت مؤشر الخطوات */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full mt-3" dir="rtl"> {/* تم تغيير max-w-2xl mx-auto إلى w-full */}
-    <motion.div 
-      className="bg-gradient-to-r from-blue-900/40 to-blue-800/30 rounded-xl p-3 border border-blue-500/30 backdrop-blur-sm"
+  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 xs:gap-3 w-full mt-3" dir="rtl">
+  <motion.div 
+    className="bg-gradient-to-r from-blue-900/40 to-blue-800/30 rounded-xl p-2 xs:p-3 border border-blue-500/30 backdrop-blur-sm"
+
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="flex items-center gap-2 h-full">
-        <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-          <BookOpen className="w-4 h-4 text-blue-400" />
-        </div>
-        <div className="flex-1 text-right"> {/* أضفت text-right هنا */}
-          <p className="text-white font-semibold text-xs mb-1">اضغط على الشاشة الكبيرة</p>
-          <p className="text-blue-200/60 text-[10px] leading-tight">
-            استكشاف المنتجات وقراءة قصصها<br />ومشاهدتها بتقنية 3D
-          </p>
-        </div>
+
+       <div className="flex items-center gap-1.5 xs:gap-2 h-full">
+      <div className="w-6 h-6 xs:w-8 xs:h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+        <BookOpen className="w-3 h-3 xs:w-4 xs:h-4 text-blue-400" />
       </div>
-    </motion.div>
-    
-    <motion.div 
-      className="bg-gradient-to-r from-amber-900/40 to-amber-800/30 rounded-xl p-3 border border-amber-500/30 backdrop-blur-sm"
+      <div className="flex-1 text-right">
+        <p className="text-white font-semibold text-[10px] xs:text-xs mb-0.5 xs:mb-1">اضغط على الشاشة الكبيرة</p>
+        <p className="text-blue-200/60 text-[9px] xs:text-[10px] leading-tight">
+          استكشاف المنتجات ومشاهدة قصصها
+        </p>
+      </div>
+    </div>
+  </motion.div>
+  
+  <motion.div 
+    className="bg-gradient-to-r from-amber-900/40 to-amber-800/30 rounded-xl p-2 xs:p-3 border border-amber-500/30 backdrop-blur-sm"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="flex items-center gap-2 h-full">
-        <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
-          <ShoppingCart className="w-4 h-4 text-amber-400" />
-        </div>
-        <div className="flex-1 text-right"> {/* أضفت text-right هنا */}
-          <p className="text-white font-semibold text-xs mb-1">اضغط على شاشة الدفع الصغيرة</p>
-          <p className="text-amber-200/60 text-[10px] leading-tight">
-            لتجربة عملية الشراء<br />واختيار المنتجات
-          </p>
-        </div>
+
+       <div className="flex items-center gap-1.5 xs:gap-2 h-full">
+      <div className="w-6 h-6 xs:w-8 xs:h-8 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+        <ShoppingCart className="w-3 h-3 xs:w-4 xs:h-4 text-amber-400" />
       </div>
-          </motion.div>
+      <div className="flex-1 text-right">
+        <p className="text-white font-semibold text-[10px] xs:text-xs mb-0.5 xs:mb-1">اضغط على شاشة الدفع</p>
+        <p className="text-amber-200/60 text-[9px] xs:text-[10px] leading-tight">
+          لتجربة عملية الشراء
+        </p>
+      </div>
+    </div>
+  </motion.div>
 </div>
           </motion.div>
 

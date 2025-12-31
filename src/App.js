@@ -27,6 +27,26 @@ function App() {
     return () => unsubscribe();
   }, [heroProgress]);
 
+  // Add this useEffect to App.js if not already present
+useEffect(() => {
+  // Prevent zoom on input focus on mobile
+  const preventZoom = () => {
+    const viewport = document.querySelector("meta[name=viewport]");
+    if (viewport) {
+      viewport.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+    }
+  };
+  
+  preventZoom();
+  
+  // Add touch-action for better scrolling
+  document.body.style.touchAction = 'manipulation';
+  
+  return () => {
+    document.body.style.touchAction = '';
+  };
+}, []);
+
   return (
     <div className="bg-slate-950 min-h-screen">
       <ScrollProgress progress={scrollProgress} />

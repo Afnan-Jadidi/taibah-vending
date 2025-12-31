@@ -63,7 +63,7 @@ export default function HeroSection({ scrollProgress }) {
         
         {/* Left Side - Text Content */}
         <motion.div 
-          className="flex-1 text-center lg:text-right order-2 lg:order-1 max-w-xl px-2"
+          className="flex-1 text-center lg:text-right order-2 lg:order-1 max-w-xl px-2 sm:px-4"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
@@ -76,48 +76,49 @@ export default function HeroSection({ scrollProgress }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-400" />
-            <span className="text-amber-300 text-xs md:text-sm font-medium">المدينة المنورة</span>
+      <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-400" />
+      <span className="text-amber-300 text-xs md:text-sm font-medium">المدينة المنورة</span>
           </motion.div>
 
-          {/* Main Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 md:mb-4">
-            هدية تُقدم
-            <span className="block text-amber-400 mt-1 md:mt-2">وروح تُهدى</span>
-          </h1>
+  {/* Main Title - adjust font sizes */}
+    <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 md:mb-4">
+      هدية تُقدم
+      <span className="block text-amber-400 mt-1 md:mt-2">وروح تُهدى</span>
+    </h1>
 
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl text-emerald-100/80 mb-6 md:mb-8 leading-relaxed">
-            آلة بيع ذكية توفر لك أجمل الهدايا والتذكارات من المدينة المنورة
-            <br />
-            <span className="text-amber-300">بلمسة واحدة</span>
-          </p>
+    {/* Subtitle */}
+    <p className="text-sm xs:text-base sm:text-lg md:text-xl text-emerald-100/80 mb-6 md:mb-8 leading-relaxed">
+      آلة بيع ذكية توفر لك أجمل الهدايا والتذكارات من المدينة المنورة
+      <br className="hidden xs:block" />
+      <span className="text-amber-300">بلمسة واحدة</span>
+    </p>
 
-          {/* Features */}
-          <div className="flex flex-wrap justify-center lg:justify-start gap-2 md:gap-4 mb-6 md:mb-8">
-            {[
-              { icon: Gift, text: 'هدايا فريدة' },
-              { icon: Sparkles, text: 'جودة عالية' },
-              { icon: MapPin, text: 'من قلب المدينة' },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-white/10 backdrop-blur-sm rounded-lg text-xs md:text-sm"
+    {/* Features - adjust for small screens */}
+    <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 xs:gap-2 md:gap-4 mb-6 md:mb-8">
+      {[
+        { icon: Gift, text: 'هدايا فريدة' },
+        { icon: Sparkles, text: 'جودة عالية' },
+        { icon: MapPin, text: 'من قلب المدينة' },
+      ].map((item, i) => (
+        <motion.div
+          key={i}
+          className="flex items-center gap-1 md:gap-2 px-2 xs:px-3 md:px-4 py-1 md:py-2 bg-white/10 backdrop-blur-sm rounded-lg text-[10px] xs:text-xs md:text-sm"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
               >
-                <item.icon className="w-4 h-4 md:w-5 md:h-5 text-amber-400" />
-                <span className="text-white">{item.text}</span>
-              </motion.div>
-            ))}
-          </div>
 
+                          <item.icon className="w-3.5 h-3.5 xs:w-4 xs:h-4 md:w-5 md:h-5 text-amber-400" />
+          <span className="text-white whitespace-nowrap">{item.text}</span>
         </motion.div>
+      ))}
+    </div>
+  </motion.div>
+
 
           {/* Right Side - Vending Machine */}
           <motion.div 
-            className="flex-1 flex justify-center order-1 lg:order-2 scale-75 sm:scale-90 md:scale-95 lg:scale-100 lg:mt-8 lg:pt-8" // Added lg:mt-8 and lg:pt-8
+            className="flex-1 flex justify-center order-1 lg:order-2 scale-[0.65] xs:scale-75 sm:scale-90 md:scale-95 lg:scale-100 lg:mt-8 lg:pt-8" // Added lg:mt-8 and lg:pt-8
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
