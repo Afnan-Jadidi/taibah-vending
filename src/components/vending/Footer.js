@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Gift } from 'lucide-react';
+import { MapPin, Phone, Mail, Gift, Twitter } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -46,6 +46,33 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+            
+            {/* Social Media Links */}
+            <div className="mt-4 md:mt-6">
+              <h5 className="text-amber-400 font-semibold text-sm md:text-base mb-2 md:mb-3">تابعنا</h5>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.tiktok.com/@taibahid1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-emerald-900/50 hover:bg-amber-500 flex items-center justify-center transition-colors group"
+                  aria-label="TikTok"
+                >
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-emerald-100/70 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://x.com/taibahID"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-emerald-900/50 hover:bg-amber-500 flex items-center justify-center transition-colors group"
+                  aria-label="X (Twitter)"
+                >
+                  <Twitter className="w-4 h-4 md:w-5 md:h-5 text-emerald-100/70 group-hover:text-white" />
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Links */}

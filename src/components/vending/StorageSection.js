@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gift, Check, ShieldCheck, ShoppingCart, CreditCard, Star, X, Package, Lock, Truck, BookAudio, BookA, BookImage, BookIcon, BookOpen } from 'lucide-react';
+import { Gift, Check, ShieldCheck, ShoppingCart, CreditCard, Star, X, Package, Lock, Truck, BookAudio, BookA, BookImage, BookIcon, BookOpen, ArrowUp, ArrowDown } from 'lucide-react';
 import ProductStory from './ProductStory';
 
 export default function StorageSection({ isVisible }) {
@@ -283,6 +283,46 @@ export default function StorageSection({ isVisible }) {
                     <text x="230" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">Stories</text>
                   </g>
                   
+                  {/* Arrow pointing to Big Screen - Blue Arrow */}
+                  <g>
+                    <motion.g
+                      animate={{ 
+                        x: [0, -8, 0],
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {/* Arrow shape pointing up-left to the big screen */}
+                      <line 
+                        x1="75" 
+                        y1="230" 
+                        x2="115" 
+                        y2="200" 
+                        stroke="#3b82f6" 
+                        strokeWidth="3" 
+                        strokeLinecap="round"
+                      />
+                      {/* Arrow head pointing right-up toward screen */}
+                      <path 
+                        d="M 120 200 L 110 212 L 110 198 Z" 
+                        fill="#60a5fa" 
+                        stroke="#3b82f6" 
+                        strokeWidth="1.5"
+                      />
+                    </motion.g>
+                    
+                    {/* Text for Big Screen */}
+                    <text x="60" y="235" fill="#60a5fa" fontSize="18" fontWeight="bold" textAnchor="end">
+                    قم بتجربة شاشة التصفح  
+                    </text>
+                    <text x="60" y="260" fill="#93c5fd" fontSize="14" textAnchor="end">
+                      اضغط واستكشف المنتجات وقصصها
+                    </text>
+                  </g>
+                  
                   {/* Right Section - Glass Display */}
                   <rect x="295" y="130" width="180" height="320" rx="4" fill="#1a1a1a" />
                   <rect x="300" y="135" width="170" height="310" rx="2" fill="url(#shelfLight3)" />
@@ -508,6 +548,47 @@ export default function StorageSection({ isVisible }) {
                       <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
                     </circle>
                   </g>
+                  
+                  {/* Arrow pointing to Payment Screen - Amber Arrow */}
+                  <g>
+                    <motion.g
+                      animate={{ 
+                        x: [0, -8, 0],
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5
+                      }}
+                    >
+                      {/* Arrow shape pointing down-right to the payment screen */}
+                      <line 
+                        x1="550" 
+                        y1="290" 
+                        x2="518" 
+                        y2="290" 
+                        stroke="#f59e0b" 
+                        strokeWidth="3" 
+                        strokeLinecap="round"
+                      />
+                      {/* Arrow head pointing left toward payment screen */}
+                      <path 
+                        d="M 518 290 L 524 286 L 524 294 Z" 
+                        fill="#fbbf24" 
+                        stroke="#f59e0b" 
+                        strokeWidth="1.5"
+                      />
+                    </motion.g>
+                    
+                    {/* Text for Payment Screen */}
+                    <text x="560" y="290" fill="#fbbf24" fontSize="18" fontWeight="bold" textAnchor="start">
+                     قم بتجربة شاشة الدفع
+                    </text>
+                    <text x="575" y="315" fill="#fcd34d" fontSize="14" textAnchor="start">
+                      اضغط وجرّب عملية الشراء
+                    </text>
+                  </g>
 
                   {/* Pickup Slot */}
                   <rect x="120" y="455" width="355" height="50" rx="6" fill="#163d32" />
@@ -568,50 +649,6 @@ export default function StorageSection({ isVisible }) {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Interactive Instructions */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 w-full max-w-3xl lg:max-w-4xl mt-4 md:mt-6" dir="rtl">
-              <motion.div 
-                className="bg-gradient-to-r from-blue-900/40 to-blue-800/30 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 border border-blue-500/30 backdrop-blur-sm"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 h-full">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                    <BookOpen className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-400" />
-                  </div>
-                  <div className="flex-1 text-right">
-                    <p className="text-white font-semibold text-xs sm:text-sm md:text-base mb-0.5 sm:mb-1">اضغط على الشاشة الكبيرة</p>
-                    <p className="text-blue-200/60 text-[10px] sm:text-xs md:text-sm leading-tight">
-                      استكشاف المنتجات ومشاهدة قصصها
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                className="bg-gradient-to-r from-amber-900/40 to-amber-800/30 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 border border-amber-500/30 backdrop-blur-sm"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 h-full">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
-                    <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-amber-400" />
-                  </div>
-                  <div className="flex-1 text-right">
-                    <p className="text-white font-semibold text-xs sm:text-sm md:text-base mb-0.5 sm:mb-1">اضغط على شاشة الدفع</p>
-                    <p className="text-amber-200/60 text-[10px] sm:text-xs md:text-sm leading-tight">
-                      لتجربة عملية الشراء
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
