@@ -167,12 +167,12 @@ export default function StorageSection({ isVisible }) {
             <div className="relative bg-emerald-900/30 rounded-xl md:rounded-2xl lg:rounded-3xl p-3 sm:p-4 md:p-6 border border-amber-500/20 w-full max-w-3xl lg:max-w-4xl mx-auto">
               
               {/* Responsive SVG Container - Different sizes for different screens */}
-              <div className="relative w-full aspect-[1.1] 
-                h-[280px] xs:h-[320px] 
-                sm:h-[380px] md:h-[420px] 
-                lg:h-[480px] xl:h-[550px] 2xl:h-[600px]">
+<div className="relative w-full aspect-[2] 
+  h-[220px] xs:h-[260px]   // أطول قليلاً من 200/240
+  sm:h-[320px] md:h-[360px] 
+  lg:h-[400px] xl:h-[460px] 2xl:h-[520px]">
                 <svg 
-                  viewBox="0 0 630 550" 
+                  viewBox="-150 0 850 600" 
                   className="absolute inset-0 w-full h-full drop-shadow-xl lg:drop-shadow-2xl"
                   preserveAspectRatio="xMidYMid meet"
                 >
@@ -316,7 +316,7 @@ export default function StorageSection({ isVisible }) {
                     
                     {/* Text for Big Screen */}
                     <text x="60" y="235" fill="#60a5fa" fontSize="18" fontWeight="bold" textAnchor="end">
-                    قم بتجربة شاشة التصفح  
+                     جرّب شاشة التصفح
                     </text>
                     <text x="60" y="260" fill="#93c5fd" fontSize="14" textAnchor="end">
                       اضغط واستكشف المنتجات وقصصها
@@ -583,9 +583,9 @@ export default function StorageSection({ isVisible }) {
                     
                     {/* Text for Payment Screen */}
                     <text x="560" y="290" fill="#fbbf24" fontSize="18" fontWeight="bold" textAnchor="start">
-                     قم بتجربة شاشة الدفع
+                      جرّب شاشة الدفع
                     </text>
-                    <text x="575" y="315" fill="#fcd34d" fontSize="14" textAnchor="start">
+                    <text x="540" y="315" fill="#fcd34d" fontSize="14" textAnchor="start">
                       اضغط وجرّب عملية الشراء
                     </text>
                   </g>
