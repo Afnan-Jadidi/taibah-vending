@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Gift, MapPin, Sparkles, BookOpen } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import MobileNav from './MobileNav'; // Add this import
+import { useLanguage } from '../../i18n/LanguageContext';
 
 export default function HeroSection({ scrollProgress }) {
+  const { t, lang, dir } = useLanguage();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -63,11 +65,11 @@ export default function HeroSection({ scrollProgress }) {
         
         {/* Left Side - Text Content */}
         <motion.div 
-          className="flex-1 text-center lg:text-right order-2 lg:order-1 max-w-xl px-2 sm:px-4"
+          className={`flex-1 text-center max-w-xl px-2 sm:px-4 order-2 lg:order-1 ${lang === 'ar' ? 'lg:text-right' : 'lg:text-left'}`}
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          dir="rtl"
+          dir={dir}
         >
           {/* Badge */}
           <motion.div
@@ -77,28 +79,28 @@ export default function HeroSection({ scrollProgress }) {
             transition={{ delay: 0.3 }}
           >
       <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-400" />
-      <span className="text-amber-300 text-xs md:text-sm font-medium">المدينة المنورة</span>
+      <span className="text-amber-300 text-xs md:text-sm font-medium">{t('hero.location_badge')}</span>
           </motion.div>
 
   {/* Main Title - adjust font sizes */}
     <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 md:mb-4">
-      هدية تُقدم
-      <span className="block text-amber-400 mt-1 md:mt-2">وروح تُهدى</span>
+      {t('hero.title_part1')}
+      <span className="block text-amber-400 mt-1 md:mt-2">{t('hero.title_part2')}</span>
     </h1>
 
     {/* Subtitle */}
     <p className="text-sm xs:text-base sm:text-lg md:text-xl text-emerald-100/80 mb-6 md:mb-8 leading-relaxed">
-      آلة بيع ذكية توفر لك أجمل الهدايا والتذكارات من المدينة المنورة
+      {t('hero.subtitle_main')}
       <br className="hidden xs:block" />
-      <span className="text-amber-300">بلمسة واحدة</span>
+      <span className="text-amber-300">{t('hero.subtitle_accent')}</span>
     </p>
 
     {/* Features - adjust for small screens */}
     <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 xs:gap-2 md:gap-4 mb-6 md:mb-8">
       {[
-        { icon: Gift, text: 'هدايا فريدة' },
-        { icon: Sparkles, text: 'جودة عالية' },
-        { icon: MapPin, text: 'من قلب المدينة' },
+        { icon: Gift, text: t('hero.feature_unique_gifts') },
+        { icon: Sparkles, text: t('hero.feature_high_quality') },
+        { icon: MapPin, text: t('hero.feature_heart_madinah') },
       ].map((item, i) => (
         <motion.div
           key={i}
@@ -302,10 +304,10 @@ export default function HeroSection({ scrollProgress }) {
 
                 {/* Screen Buttons */}
                 <rect x="80" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent)" strokeWidth="1" />
-                <text x="110" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">Buy</text>
+                <text x="110" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">{t('hero.btn_buy')}</text>
 
                 <rect x="150" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent)" strokeWidth="1" />
-                <text x="180" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">Stories</text>
+                <text x="180" y="425" textAnchor="middle" fill="#c9a227" fontSize="10">{t('hero.btn_stories')}</text>
               </g>
 
               {/* Right Section - Glass Display */}
@@ -327,7 +329,7 @@ export default function HeroSection({ scrollProgress }) {
                 <circle cx="275" cy="163" r="4" fill="#2d1a12" />
                 <circle cx="285" cy="167" r="3" fill="#2d1a12" />
                 <circle cx="280" cy="162" r="3" fill="#3d2317" />
-                <text x="280" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">عجوة</text>
+                <text x="280" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">{t('product.ajwa')}</text>
                 
                 {/* Date Box 2 - Sukkari */}
                 <rect x="310" y="145" width="50" height="55" rx="4" fill="#4a3520" />
@@ -335,7 +337,7 @@ export default function HeroSection({ scrollProgress }) {
                 <ellipse cx="335" cy="165" rx="15" ry="10" fill="#3d2a15" />
                 <circle cx="330" cy="163" r="4" fill="#4a3520" />
                 <circle cx="340" cy="167" r="3" fill="#4a3520" />
-                <text x="335" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">سكري</text>
+                <text x="335" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">{t('product.sukkari')}</text>
                 
                 {/* Date Box 3 - Amber */}
                 <rect x="365" y="145" width="50" height="55" rx="4" fill="#5c3d1e" />
@@ -343,7 +345,7 @@ export default function HeroSection({ scrollProgress }) {
                 <ellipse cx="390" cy="165" rx="15" ry="10" fill="#4a3215" />
                 <circle cx="385" cy="163" r="4" fill="#5c3d1e" />
                 <circle cx="395" cy="167" r="3" fill="#5c3d1e" />
-                <text x="390" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">عنبر</text>
+                <text x="390" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">{t('product.amber_date')}</text>
                 
                 <rect x="250" y="202" width="170" height="3" fill="url(#goldAccent)" opacity="0.9" />
               </g>
@@ -394,21 +396,21 @@ export default function HeroSection({ scrollProgress }) {
                 <ellipse cx="280" cy="298" rx="14" ry="18" fill="none" stroke="#c97b63" strokeWidth="4" />
                 <circle cx="280" cy="316" r="5" fill="#c97b63" />
                 <path d="M280 280 L280 275" stroke="#c97b63" strokeWidth="2" />
-                <text x="280" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">ورد</text>
+                <text x="280" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.rose')}</text>
                 
                 {/* Sibha 2 - Crystal */}
                 <rect x="310" y="275" width="50" height="52" rx="4" fill="#1a2f3d" />
                 <ellipse cx="335" cy="298" rx="14" ry="18" fill="none" stroke="#87CEEB" strokeWidth="4" />
                 <circle cx="335" cy="316" r="5" fill="#87CEEB" />
                 <path d="M335 280 L335 275" stroke="#87CEEB" strokeWidth="2" />
-                <text x="335" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">كريستال</text>
+                <text x="335" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.crystal')}</text>
                 
                 {/* Sibha 3 - Oud */}
                 <rect x="365" y="275" width="50" height="52" rx="4" fill="#2d1f1a" />
                 <ellipse cx="390" cy="298" rx="14" ry="18" fill="none" stroke="#8B4513" strokeWidth="4" />
                 <circle cx="390" cy="316" r="5" fill="#8B4513" />
                 <path d="M390 280 L390 275" stroke="#8B4513" strokeWidth="2" />
-                <text x="390" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">عود</text>
+                <text x="390" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.oud')}</text>
                 
                 <rect x="250" y="329" width="170" height="3" fill="url(#goldAccent)" opacity="0.9" />
               </g>
@@ -450,13 +452,13 @@ export default function HeroSection({ scrollProgress }) {
                 <rect x="255" y="395" width="45" height="40" rx="3" fill="#3d2a1a" />
                 <rect x="260" y="400" width="35" height="25" rx="2" fill="#5c4020" />
                 <path d="M277 408 Q277 400 285 408 Q277 416 277 408" fill="#c9a227" opacity="0.6" />
-                <text x="277" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">بخور</text>
+                <text x="277" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.bakhoor')}</text>
                 
                 {/* Bakhoor Box 2 */}
                 <rect x="305" y="395" width="45" height="40" rx="3" fill="#2a3d1a" />
                 <rect x="310" y="400" width="35" height="25" rx="2" fill="#3d5c20" />
                 <circle cx="327" cy="412" r="6" fill="none" stroke="#c9a227" strokeWidth="1" />
-                <text x="327" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">عنبر</text>
+                <text x="327" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.amber_date')}</text>
                 
                 {/* Miswak Bundle */}
                 <rect x="355" y="395" width="25" height="40" rx="2" fill="#4a3d2a" />
@@ -467,14 +469,14 @@ export default function HeroSection({ scrollProgress }) {
                 {/* Zamzam Water */}
                 <rect x="385" y="395" width="28" height="40" rx="3" fill="#e8f4f8" />
                 <rect x="390" y="405" width="18" height="25" rx="2" fill="#b8d4e8" />
-                <text x="399" y="422" textAnchor="middle" fill="#1e5a47" fontSize="4" fontWeight="bold">زمزم</text>
+                <text x="399" y="422" textAnchor="middle" fill="#1e5a47" fontSize="4" fontWeight="bold">{t('product.zamzam')}</text>
                 <rect x="392" y="400" width="14" height="6" fill="#c9a227" />
               </g>
               
               {/* Pickup Slot */}
               <rect x="70" y="455" width="355" height="50" rx="6" fill="#163d32" />
               <rect x="70" y="455" width="355" height="50" rx="6" fill="none" stroke="url(#goldAccent)" strokeWidth="2" />
-              <text x="240" y="485" textAnchor="middle" fill="#c9a227" fontSize="11" fontWeight="bold">استلم هديتك ▼</text>
+              <text x="240" y="485" textAnchor="middle" fill="#c9a227" fontSize="11" fontWeight="bold">{t('hero.pickup_label')}</text>
 
               {/* Decorative corner pieces */}
               <rect x="65" y="125" width="15" height="15" fill="url(#goldAccent)" opacity="0.6" />
@@ -492,7 +494,7 @@ export default function HeroSection({ scrollProgress }) {
             >
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full animate-pulse" />
-                <span className="text-xs text-white">متاح 24/7</span>
+                <span className="text-xs text-white">{t('hero.available_24_7')}</span>
               </div>
             </motion.div>
 
@@ -521,7 +523,7 @@ export default function HeroSection({ scrollProgress }) {
   transition={{ duration: 2, repeat: Infinity }}
   onClick={scrollToNextSection}
 >
-  <span className="text-emerald-300/60 text-xs">اكتشف المزيد</span>
+  <span className="text-emerald-300/60 text-xs">{t('hero.discover_more')}</span>
   <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-amber-400" />
 </motion.div>
 

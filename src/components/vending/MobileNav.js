@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, Gift, MapPin, Info, Users, Phone } from 'lucide-react';
+import { useLanguage } from '../../i18n/LanguageContext';
 
 export default function MobileNav() {
+  const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { icon: Home, text: 'الرئيسية', href: '#', color: 'text-blue-400' },
-    { icon: Gift, text: 'منتجاتنا', href: '#storage-section', color: 'text-amber-400' },
-    { icon: MapPin, text: 'مواقعنا', href: '#locations', color: 'text-emerald-400' },
-    { icon: Info, text: 'عن المشروع', href: '#about', color: 'text-purple-400' },
-    { icon: Users, text: 'كن شريكاً', href: '#partners', color: 'text-rose-400' },
+    { icon: Home, text: t('nav.home'), href: '#', color: 'text-blue-400' },
+    { icon: Gift, text: t('nav.products'), href: '#storage-section', color: 'text-amber-400' },
+    { icon: MapPin, text: t('nav.locations'), href: '#locations', color: 'text-emerald-400' },
+    { icon: Info, text: t('nav.about'), href: '#about', color: 'text-purple-400' },
+    { icon: Users, text: t('nav.partners'), href: '#partners', color: 'text-rose-400' },
   ];
 
   const contactInfo = [
@@ -26,14 +28,14 @@ export default function MobileNav() {
   };
 
   return (
-    <div className="md:hidden fixed top-4 right-4 z-50">
+    <div className={`md:hidden fixed top-4 ${lang === 'ar' ? 'right-4' : 'right-4'} z-50`}>
       {/* Menu Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="w-12 h-12 bg-emerald-800/90 backdrop-blur-sm rounded-full border border-amber-500/30 flex items-center justify-center touch-target shadow-lg"
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.05 }}
-        aria-label={isOpen ? "إغلاق القائمة" : "فتح القائمة"}
+        aria-label={isOpen ? t('nav.close_menu') : t('nav.open_menu')}
         aria-expanded={isOpen}
       >
         <AnimatePresence mode="wait">
@@ -97,7 +99,7 @@ export default function MobileNav() {
                   <div className={`w-10 h-10 rounded-lg bg-emerald-800/50 flex items-center justify-center group-hover:scale-110 transition-transform ${item.color}`}>
                     <item.icon className="w-5 h-5" />
                   </div>
-                  <span className="font-medium text-sm flex-1 text-right">{item.text}</span>
+                  <span className={`font-medium text-sm flex-1 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>{item.text}</span>
                   <motion.div 
                     className="w-1.5 h-1.5 rounded-full bg-amber-400/50 opacity-0 group-hover:opacity-100"
                     animate={{ scale: [1, 1.2, 1] }}
@@ -111,7 +113,7 @@ export default function MobileNav() {
               
               {/* Quick Contact */}
               <div className="px-3 py-2">
-                <p className="text-emerald-200/70 text-xs mb-2 text-center">تواصل سريع</p>
+                <p className="text-emerald-200/70 text-xs mb-2 text-center">{t('nav.quick_contact')}</p>
                 {contactInfo.map((item, index) => (
                   <motion.a
                     key={item.text}
@@ -140,8 +142,8 @@ export default function MobileNav() {
                     <Gift className="w-4 h-4 text-white" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-white font-bold text-sm">هدايا هوية طيبة</span>
-                    <span className="text-emerald-200/50 text-[10px]">المدينة المنورة</span>
+                    <span className="text-white font-bold text-sm">{t('nav.brand_name')}</span>
+                    <span className="text-emerald-200/50 text-[10px]">{t('nav.brand_sub')}</span>
                   </div>
                 </div>
               </motion.div>
@@ -153,7 +155,7 @@ export default function MobileNav() {
                 animate={{ opacity: 0.6 }}
                 transition={{ delay: 0.5 }}
               >
-                <p className="text-emerald-200/40 text-xs">انقر خارج القائمة للإغلاق</p>
+                <p className="text-emerald-200/40 text-xs">{t('nav.close_hint')}</p>
               </motion.div>
             </div>
           </motion.div>

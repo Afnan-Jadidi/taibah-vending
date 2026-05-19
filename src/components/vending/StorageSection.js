@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gift, Check, ShieldCheck, ShoppingCart, CreditCard, Star, X, Package, Lock, Truck, BookAudio, BookA, BookImage, BookIcon, BookOpen, ArrowUp, ArrowDown } from 'lucide-react';
 import ProductStory from './ProductStory';
+import { useLanguage } from '../../i18n/LanguageContext';
 
 export default function StorageSection({ isVisible }) {
+  const { t, lang, dir } = useLanguage();
   const [selectedShelfItem, setSelectedShelfItem] = useState(null);
   const [isDispensing, setIsDispensing] = useState(false);
   const [dispensingStep, setDispensingStep] = useState(0);
@@ -19,21 +21,21 @@ export default function StorageSection({ isVisible }) {
   const [currentElevatorPosition, setCurrentElevatorPosition] = useState({ x: 385, y: 450 });
 
   const products = [
-    { 
-      id: 1, 
-      name: "سبحة ورد المدينة", 
-      price: 45, 
-      rating: 4.8, 
+    {
+      id: 1,
+      name: t('product.madinah_rose_sibha_name'),
+      price: 45,
+      rating: 4.8,
       icon: "📿",
-      story: "سبحة يدوية الصنع من ورد المدينة المنورة، صُنعت بحرفية عالية في ورش المدينة."
+      story: t('product.madinah_rose_sibha_story'),
     },
-    { 
-      id: 3, 
-      name: "تمر عجوة", 
-      price: 85, 
-      rating: 4.7, 
+    {
+      id: 3,
+      name: t('product.ajwa_dates_name'),
+      price: 85,
+      rating: 4.7,
       icon: "🌴",
-      story: "تمر العجوة الأصلي من مزارع المدينة المنورة."
+      story: t('product.ajwa_dates_story'),
     },
   ];
 
@@ -125,26 +127,26 @@ export default function StorageSection({ isVisible }) {
   const protectionFeatures = [
     {
       icon: Star,
-      title: "مشاهدة ثلاثية الأبعاد",
-      description: "استكشاف المنتج بزاوية 360° وتفاصيله الدقيقة",
+      title: t('storage.feature_3d_title'),
+      description: t('storage.feature_3d_desc'),
       color: "from-blue-500 to-blue-600"
     },
     {
       icon: BookIcon,
-      title: "قصة المنتج",
-      description: "تعرف على القصة والتراث خلف كل منتج",
+      title: t('storage.feature_story_title'),
+      description: t('storage.feature_story_desc'),
       color: "from-purple-500 to-purple-600"
     },
     {
       icon: ShieldCheck,
-      title: "نظام مصعد آمن",
-      description: "مصعد ذكي يضمن نقل المنتجات دون تلف أو خدش",
+      title: t('storage.feature_elevator_title'),
+      description: t('storage.feature_elevator_desc'),
       color: "from-emerald-500 to-emerald-600"
     },
     {
       icon: Package,
-      title: "حماية المنتجات",
-      description: "تغليف مضاد للصدمات",
+      title: t('storage.feature_protection_title'),
+      description: t('storage.feature_protection_desc'),
       color: "from-amber-500 to-amber-600"
     }
   ];
@@ -175,6 +177,8 @@ export default function StorageSection({ isVisible }) {
                   viewBox="-150 0 850 600" 
                   className="absolute inset-0 w-full h-full drop-shadow-xl lg:drop-shadow-2xl"
                   preserveAspectRatio="xMidYMid meet"
+                  direction="ltr"
+                  style={{ direction: 'ltr' }}
                 >
                   <defs>
                     <linearGradient id="sideGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -251,7 +255,7 @@ export default function StorageSection({ isVisible }) {
                     }}>
                       <rect x="140" y="150" width="120" height="25" rx="4" fill="#1e5a47" />
                       <rect x="140" y="150" width="120" height="25" rx="4" fill="none" stroke="url(#goldAccent3)" strokeWidth="1" />
-                      <text x="200" y="166" textAnchor="middle" fill="#c9a227" fontSize="8" fontWeight="bold">🌐 اللغة / Language</text>
+                      <text x="200" y="166" textAnchor="middle" fill="#c9a227" fontSize="8" fontWeight="bold">{t('vm.lang_button')}</text>
                     </g>
                     
                     {/* Main Logo */}
@@ -274,7 +278,7 @@ export default function StorageSection({ isVisible }) {
                       </foreignObject>
                     </g>
                     
-                    <text x="200" y="320" textAnchor="middle" fill="#1e5a47" fontSize="10" fontWeight="bold">اضغط لاختيار المنتج</text>
+                    <text x="200" y="320" textAnchor="middle" fill="#1e5a47" fontSize="10" fontWeight="bold">{t('vm.tap_to_choose')}</text>
                     
                     {/* Action Buttons */}
                     <rect x="130" y="400" width="60" height="40" rx="4" fill="#163d32" stroke="url(#goldAccent3)" strokeWidth="1" />
@@ -316,10 +320,10 @@ export default function StorageSection({ isVisible }) {
                     
                     {/* Text for Big Screen */}
                     <text x="60" y="235" fill="#60a5fa" fontSize="18" fontWeight="bold" textAnchor="end">
-                     جرّب شاشة التصفح
+                     {t('vm.try_browse_screen')}
                     </text>
                     <text x="60" y="260" fill="#93c5fd" fontSize="14" textAnchor="end">
-                      اضغط واستكشف المنتجات وقصصها
+                      {t('vm.try_browse_hint')}
                     </text>
                   </g>
                   
@@ -347,21 +351,21 @@ export default function StorageSection({ isVisible }) {
                     <circle cx="325" cy="163" r="4" fill="#2d1a12" />
                     <circle cx="335" cy="167" r="3" fill="#2d1a12" />
                     <circle cx="330" cy="162" r="3" fill="#3d2317" />
-                    <text x="330" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">عجوة</text>
+                    <text x="330" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">{t('product.ajwa')}</text>
                     
                     <rect x="360" y="145" width="50" height="55" rx="4" fill="#4a3520" onClick={() => handleSelectItem(shelfItems[1])} />
                     <rect x="363" y="148" width="44" height="35" rx="2" fill="#5c4428" />
                     <ellipse cx="385" cy="165" rx="15" ry="10" fill="#3d2a15" />
                     <circle cx="380" cy="163" r="4" fill="#4a3520" />
                     <circle cx="390" cy="167" r="3" fill="#4a3520" />
-                    <text x="385" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">سكري</text>
+                    <text x="385" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">{t('product.sukkari')}</text>
                     
                     <rect x="415" y="145" width="50" height="55" rx="4" fill="#5c3d1e" onClick={() => handleSelectItem(shelfItems[2])} />
                     <rect x="418" y="148" width="44" height="35" rx="2" fill="#6b4a25" />
                     <ellipse cx="440" cy="165" rx="15" ry="10" fill="#4a3215" />
                     <circle cx="435" cy="163" r="4" fill="#5c3d1e" />
                     <circle cx="445" cy="167" r="3" fill="#5c3d1e" />
-                    <text x="440" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">عنبر</text>
+                    <text x="440" y="195" textAnchor="middle" fill="#c9a227" fontSize="6" fontWeight="bold">{t('product.amber_date')}</text>
                     
                     <rect x="300" y="202" width="170" height="3" fill="url(#goldAccent3)" opacity="0.9" />
                   </g>
@@ -393,19 +397,19 @@ export default function StorageSection({ isVisible }) {
                     <ellipse cx="330" cy="298" rx="14" ry="18" fill="none" stroke="#c97b63" strokeWidth="4" />
                     <circle cx="330" cy="316" r="5" fill="#c97b63" />
                     <path d="M330 280 L330 275" stroke="#c97b63" strokeWidth="2" />
-                    <text x="330" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">ورد</text>
+                    <text x="330" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.rose')}</text>
                     
                     <rect x="360" y="275" width="50" height="52" rx="4" fill="#1a2f3d" onClick={() => handleSelectItem(shelfItems[7])} />
                     <ellipse cx="385" cy="298" rx="14" ry="18" fill="none" stroke="#87CEEB" strokeWidth="4" />
                     <circle cx="385" cy="316" r="5" fill="#87CEEB" />
                     <path d="M385 280 L385 275" stroke="#87CEEB" strokeWidth="2" />
-                    <text x="385" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">كريستال</text>
+                    <text x="385" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.crystal')}</text>
                     
                     <rect x="415" y="275" width="50" height="52" rx="4" fill="#2d1f1a" onClick={() => handleSelectItem(shelfItems[8])} />
                     <ellipse cx="440" cy="298" rx="14" ry="18" fill="none" stroke="#8B4513" strokeWidth="4" />
                     <circle cx="440" cy="316" r="5" fill="#8B4513" />
                     <path d="M440 280 L440 275" stroke="#8B4513" strokeWidth="2" />
-                    <text x="440" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">عود</text>
+                    <text x="440" y="322" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.oud')}</text>
                     
                     <rect x="300" y="329" width="170" height="3" fill="url(#goldAccent3)" opacity="0.9" />
                   </g>
@@ -437,7 +441,7 @@ export default function StorageSection({ isVisible }) {
                     <circle cx="363" cy="361" r="2" fill="#c9a227" />
                     <line x1="363" y1="361" x2="363" y2="351" stroke="#c9a227" strokeWidth="1.5" />
                     <line x1="363" y1="361" x2="353" y2="361" stroke="#c9a227" strokeWidth="1" />
-                    <text x="363" y="390" textAnchor="middle" fill="#c9a227" fontSize="5">ساعة</text>
+                    <text x="363" y="390" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.clock')}</text>
                   </g>
 
                   {/* Shelf 5 - Incense & Misc */}
@@ -446,13 +450,13 @@ export default function StorageSection({ isVisible }) {
                     <rect x="305" y="395" width="45" height="40" rx="3" fill="#3d2a1a" onClick={() => handleSelectItem(shelfItems[12])} />
                     <rect x="310" y="400" width="35" height="25" rx="2" fill="#5c4020" />
                     <path d="M327 408 Q327 400 335 408 Q327 416 327 408" fill="#c9a227" opacity="0.6" />
-                    <text x="327" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">بخور</text>
+                    <text x="327" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.bakhoor')}</text>
 
                     {/* Bakhoor Box 2 */}
                     <rect x="355" y="395" width="45" height="40" rx="3" fill="#2a3d1a" onClick={() => handleSelectItem(shelfItems[13])} />
                     <rect x="360" y="400" width="35" height="25" rx="2" fill="#3d5c20" />
                     <circle cx="377" cy="412" r="6" fill="none" stroke="#c9a227" strokeWidth="1" />
-                    <text x="377" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">عنبر</text>
+                    <text x="377" y="432" textAnchor="middle" fill="#c9a227" fontSize="5">{t('product.amber_date')}</text>
 
                     {/* Miswak Bundle */}
                     <rect x="405" y="395" width="25" height="40" rx="2" fill="#4a3d2a" onClick={() => handleSelectItem(shelfItems[14])} />
@@ -463,7 +467,7 @@ export default function StorageSection({ isVisible }) {
                     {/* Zamzam Water */}
                     <rect x="435" y="395" width="28" height="40" rx="3" fill="#e8f4f8" onClick={() => handleSelectItem(shelfItems[15])} />
                     <rect x="440" y="405" width="18" height="25" rx="2" fill="#b8d4e8" />
-                    <text x="449" y="422" textAnchor="middle" fill="#1e5a47" fontSize="4" fontWeight="bold">زمزم</text>
+                    <text x="449" y="422" textAnchor="middle" fill="#1e5a47" fontSize="4" fontWeight="bold">{t('product.zamzam')}</text>
                     <rect x="442" y="400" width="14" height="6" fill="#c9a227" />
                   </g>
 
@@ -515,8 +519,8 @@ export default function StorageSection({ isVisible }) {
                       <path d="M-2 -2 L2 -2 L2.8 2 L-2.8 2 Z" fill="#1e5a47" strokeWidth="0.3" stroke="#1e5a47" />
                       <circle cx="-1.2" cy="3" r="0.6" fill="#1e5a47" />
                       <circle cx="1.2" cy="3" r="0.6" fill="#1e5a47" />
-                      <text y="8" textAnchor="middle" fill="#c9a227" fontSize="2" fontWeight="bold">اضغط</text>
-                      <text y="10.5" textAnchor="middle" fill="#1e5a47" fontSize="1.5">للشراء</text>
+                      <text y="8" textAnchor="middle" fill="#c9a227" fontSize="2" fontWeight="bold">{t('vm.tap_to_buy_line1')}</text>
+                      <text y="10.5" textAnchor="middle" fill="#1e5a47" fontSize="1.5">{t('vm.tap_to_buy_line2')}</text>
                     </g>
 
                     {/* Card Reader Slot */}
@@ -583,10 +587,10 @@ export default function StorageSection({ isVisible }) {
                     
                     {/* Text for Payment Screen */}
                     <text x="560" y="290" fill="#fbbf24" fontSize="18" fontWeight="bold" textAnchor="start">
-                      جرّب شاشة الدفع
+                      {t('vm.try_payment_screen')}
                     </text>
                     <text x="540" y="315" fill="#fcd34d" fontSize="14" textAnchor="start">
-                      اضغط وجرّب عملية الشراء
+                      {t('vm.try_payment_hint')}
                     </text>
                   </g>
 
@@ -606,7 +610,7 @@ export default function StorageSection({ isVisible }) {
                   )}
 
                   <text x="297.5" y={dispensingStep >= 3 ? "475" : "485"} textAnchor="middle" fill="#c9a227" fontSize="11" fontWeight="bold">
-                    {dispensingStep >= 3 ? 'جاهز! ▼' : 'استلم هديتك ▼'}
+                    {dispensingStep >= 3 ? t('vm.pickup_ready') : t('vm.pickup_default')}
                   </text>
 
                   {/* Status indicator */}
@@ -616,11 +620,11 @@ export default function StorageSection({ isVisible }) {
                       <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" />
                     </circle>
                     <text x="322" y="138" fill="#c9a227" fontSize="8">
-                      {!isDispensing && 'اختر منتجاً'}
-                      {isDispensing && dispensingStep === 0 && 'جاري الذهاب للعمود'}
-                      {isDispensing && dispensingStep === 1 && 'تحميل المنتج'}
-                      {isDispensing && dispensingStep === 2 && 'إنزال المنتج'}
-                      {isDispensing && dispensingStep === 3 && 'جاهز!'}
+                      {!isDispensing && t('vm.choose_product')}
+                      {isDispensing && dispensingStep === 0 && t('vm.going_to_column')}
+                      {isDispensing && dispensingStep === 1 && t('vm.loading_product')}
+                      {isDispensing && dispensingStep === 2 && t('vm.lowering_product')}
+                      {isDispensing && dispensingStep === 3 && t('vm.ready')}
                     </text>
                   </g>
 
@@ -633,8 +637,8 @@ export default function StorageSection({ isVisible }) {
               </div>
 
               {/* Steps indicator */}
-              <div className="mt-4 md:mt-6 flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-3" dir="rtl">
-                {['ذهاب للعمود', 'تحميل', 'إنزال آمن', 'استلام'].map((step, i) => (
+              <div className="mt-4 md:mt-6 flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-3" dir={dir}>
+                {[t('vm.step_go_column'), t('vm.step_load'), t('vm.step_safe_lower'), t('vm.step_pickup')].map((step, i) => (
                   <div 
                     key={i}
                     className={`px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full text-xs sm:text-sm md:text-sm font-medium transition-all ${
@@ -659,13 +663,13 @@ export default function StorageSection({ isVisible }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            dir="rtl"
+            dir={dir}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-right">
-              استلام <span className="text-amber-400">آمن ومحمي</span>
+            <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+              {t('storage.title_part1')} <span className="text-amber-400">{t('storage.title_part2')}</span>
             </h2>
-            <p className="text-emerald-100/70 text-sm md:text-base max-w-xl mx-auto text-right">
-              اختر منتجاً وشاهد كيف يصل إليك بأمان تام
+            <p className={`text-emerald-100/70 text-sm md:text-base max-w-xl mx-auto ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+              {t('storage.subtitle')}
             </p>
 
             {protectionFeatures.map((feature, index) => (
@@ -683,7 +687,7 @@ export default function StorageSection({ isVisible }) {
                     <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                   </div>
                   
-                  <div className="flex-1 text-right">
+                  <div className={`flex-1 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
                     <h4 className="text-white font-bold text-sm sm:text-base md:text-lg mb-1 md:mb-2">{feature.title}</h4>
                     <p className="text-emerald-100/70 text-xs sm:text-sm md:text-sm leading-relaxed">
                       {feature.description}
@@ -721,8 +725,8 @@ export default function StorageSection({ isVisible }) {
                       <Gift className="w-4 h-4 md:w-5 md:h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-emerald-800 font-bold text-sm md:text-base">هدايا طيبة</h3>
-                      <p className="text-emerald-600/70 text-xs">اختر لعرض القصة أو 3D</p>
+                      <h3 className="text-emerald-800 font-bold text-sm md:text-base">{t('browse.brand_title')}</h3>
+                      <p className="text-emerald-600/70 text-xs">{t('browse.brand_sub')}</p>
                     </div>
                   </div>
                 </div>
@@ -801,7 +805,7 @@ export default function StorageSection({ isVisible }) {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        شاهد القصة
+                        {t('browse.watch_story')}
                       </motion.button>
                       <motion.button
                         onClick={() => setViewMode('3d')}
@@ -809,7 +813,7 @@ export default function StorageSection({ isVisible }) {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        عرض 3D
+                        {t('browse.view_3d')}
                       </motion.button>
                     </div>
                   </motion.div>
@@ -826,7 +830,7 @@ export default function StorageSection({ isVisible }) {
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                   >
-                    <p className="text-emerald-600/70 text-xs mb-3">اسحب للتدوير</p>
+                    <p className="text-emerald-600/70 text-xs mb-3">{t('browse.drag_to_rotate')}</p>
                     
                     <motion.div
                       className="cursor-grab active:cursor-grabbing"
@@ -862,7 +866,7 @@ export default function StorageSection({ isVisible }) {
                       className="mt-5 px-5 py-2.5 bg-emerald-700 rounded-xl text-white hover:bg-emerald-600 transition-colors text-sm touch-target"
                       whileHover={{ scale: 1.05 }}
                     >
-                      رجوع للمنتج
+                      {t('browse.back_to_product')}
                     </motion.button>
                   </motion.div>
                 ) : null}
@@ -907,8 +911,8 @@ export default function StorageSection({ isVisible }) {
                       <ShoppingCart className="w-5 h-5 md:w-6 md:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold text-base md:text-lg">اطلب الآن</h3>
-                      <p className="text-emerald-400/70 text-xs">اختر المنتجات وادفع</p>
+                      <h3 className="text-white font-bold text-base md:text-lg">{t('cart.order_now')}</h3>
+                      <p className="text-emerald-400/70 text-xs">{t('cart.choose_and_pay')}</p>
                     </div>
                   </div>
                   <div className="bg-emerald-700/50 px-2 md:px-3 py-1 rounded-full border border-amber-500/30">
@@ -932,7 +936,7 @@ export default function StorageSection({ isVisible }) {
                         
                         <h4 className="text-white font-medium text-xs md:text-sm mb-1 truncate">{product.name}</h4>
                         <div className="flex items-center justify-between mb-1 md:mb-2">
-                          <span className="text-amber-400 font-bold text-base md:text-lg">{product.price} ر.س</span>
+                          <span className="text-amber-400 font-bold text-base md:text-lg">{product.price} {t('cart.currency')}</span>
                           <div className="flex items-center gap-1">
                             <Star className="w-2.5 h-2.5 md:w-3 md:h-3 text-amber-400 fill-amber-400" />
                             <span className="text-emerald-300/70 text-xs">{product.rating}</span>
@@ -962,7 +966,7 @@ export default function StorageSection({ isVisible }) {
                             onClick={() => setCart([...cart, { ...product, quantity: 1 }])}
                             className="w-full py-1.5 md:py-2 bg-amber-500 hover:bg-amber-600 rounded-lg text-white font-bold text-sm md:text-base transition-colors touch-target"
                           >
-                            أضف للسلة
+                            {t('cart.add_to_cart')}
                           </button>
                         )}
                       </motion.div>
@@ -977,19 +981,19 @@ export default function StorageSection({ isVisible }) {
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-emerald-900/50 rounded-xl p-3 md:p-4 border border-amber-500/30"
                   >
-                    <h4 className="text-white font-bold text-base md:text-lg mb-2 md:mb-3">ملخص الطلب</h4>
+                    <h4 className="text-white font-bold text-base md:text-lg mb-2 md:mb-3">{t('cart.order_summary')}</h4>
                     <div className="space-y-1.5 md:space-y-2 mb-2 md:mb-3">
                       {cart.map((item) => (
                         <div key={item.id} className="flex justify-between text-xs md:text-sm">
                           <span className="text-emerald-200 truncate">{item.name} × {item.quantity}</span>
-                          <span className="text-amber-400 font-bold whitespace-nowrap">{item.price * item.quantity} ر.س</span>
+                          <span className="text-amber-400 font-bold whitespace-nowrap">{item.price * item.quantity} {t('cart.currency')}</span>
                         </div>
                       ))}
                     </div>
                     <div className="border-t border-amber-500/20 pt-2 md:pt-3 flex justify-between items-center">
-                      <span className="text-white font-bold text-base md:text-lg">الإجمالي</span>
+                      <span className="text-white font-bold text-base md:text-lg">{t('cart.total')}</span>
                       <span className="text-amber-400 font-bold text-xl md:text-2xl">
-                        {cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} ر.س
+                        {cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} {t('cart.currency')}
                       </span>
                     </div>
                     <motion.button
@@ -1016,7 +1020,7 @@ export default function StorageSection({ isVisible }) {
                       }}
                     >
                       <CreditCard className="w-4 h-4 md:w-5 md:h-5" />
-                      <span>ادفع الآن</span>
+                      <span>{t('cart.pay_now')}</span>
                     </motion.button>
                   </motion.div>
                 )}
